@@ -73,11 +73,72 @@ Int Gi 1
  ip access-group NOPORN1 in
  end
 Task1.2: block admu.edu.ph, dlsu.edu.ph, ccp.edu.ph, ue.edu.ph
+alternative: use standard ACL 1-99
+config t
+no access-list 69
 
-ping www.dlsu.edu.ph 172.67.14.0
+access-list 69 DENY 66.254.0.0 0.0.255.255
+access-list 69 DENY 104.21.0.0 0.0.255.255
+access-list 69 DENY 68.235.0.0 0.0.255.255
+access-list 69 DENY 104.17.0.0 0.0.255.255
+access-list 69 DENY 88.208.0.0 0.0.255.255
+access-list 69 DENY 208.77.0.0 0.0.255.255
+access-list 69 DENY 172.67.0.0 0.0.255.255
+access-list 69 Permit Any
+Int gi 1
+ip access-group 69 in
+end
+Govt: allo all for porn freedom of expression
+config t
+Int gi 1
+NO ip access-group 69 in
+end
+
+
+config t
+no ip access-list standard noPORNNOFAP
+ip access-list standard noPORNNOFAP
+ DENY 66.254.0.0 0.0.255.255
+ DENY 104.21.0.0 0.0.255.255
+ DENY 68.235.0.0 0.0.255.255
+ DENY 104.17.0.0 0.0.255.255
+ DENY 88.208.0.0 0.0.255.255
+ DENY 208.77.0.0 0.0.255.255
+ DENY 172.67.0.0 0.0.255.255
+ Permit Any
+Int gi 1
+ip access-group noPORNNOFAP in
+end
+
+ping www.dlsu.edu.ph 172.67.14.0 104.22.37.0
 ping www.ccp.edu.ph 50.6.160.0
 ping www.feu.edu.ph 184.168.125.0
 ping  www.ue.edu.ph 155.137.92.0
+ping www.tip.edu.ph 104.22.3.0
+
+config t
+no ip access-list standard noSchool
+ip access-list standard noSchool
+ DENY 104.22.37.0 0.0.255.255 
+ DENY 50.6.160.0 0.0.255.255
+ DENY 184.168.125.0 0.0.255.255
+ DENY 104.17.0.0 0.0.255.255
+ DENY 155.137.92.0 0.0.255.255
+ DENY 104.22.3.0 0.0.255.255
+ DENY 172.67.37.22 0.0.255.255
+
+ Permit Any
+Int gi 1
+NO ip access-group noSchool in
+end
+
+next task: company has ver low internet speed bec of torrents (BLOCK)
+www.piratebay.org 172.67.215.3
+www.limetorrents.com 104.31.16.124
+www.freeanimeonline.com 76.223.54.146
+www.torlock2.com 104.21.80.1
+www.hentaisites.com 104.21.30.199
+www.iptorrents.com 104.21.16.1
 
 TASK2: USE STANDARD ACCESS-LIST TO BLOCK OTHER CONTRIES/CLASSMATE:
 config t
