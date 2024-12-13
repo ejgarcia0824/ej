@@ -1,3 +1,7 @@
+BINARY TO HEX TO DECIMAL
+
+8 4 2 1  8 4 2 1  8 4 2 1   8 4 2 1
+
 Task1: 5 mins answers:
 #PAGE 17 
 
@@ -276,6 +280,7 @@ Qpid: 802.1Q:trunking
 "make switch love each other!"LQ
 Darna: 802.1d: STP
 "slowly protect switches" , wait 30 seconds 
+lis=15, lern=15s, fwd: or blk;
 WonderWoman: 802.1w: rapidSTP
 "quickly,Brutally protect switches"
 SuperMan: 802.1s: MiSTP
@@ -312,7 +317,7 @@ spanning-tree mode pvst
 spanning-tree vlan 1-100 root Secondary
 do sh spanning-tree vlan 1
 
-TASK9.1: STP port states. 802.1D states.
+TASK9.1: STP port states. 802.1D states. (protect switches slowly/gently 30s)
 iniwanngSyuta: lungkot,galit,lasing,moveOn.
 Switch: show spanning-tree vlan 1
 Blk - LIS - LRN -FWD
@@ -338,14 +343,14 @@ spanning-tree Mode Rapid-pvst
 do sh spanning-tree vlan 1
 configure 802.1w/RapidSTP:
 
-TAAS: RootBridge: laspagin si Wonderwoman
+TAAS/D1: RootBridge: laspagin si Wonderwoman
 config t
 spanning-tree Mode Rapid-pvst
 spanning-tree BackBoneFast
 spanning-tree portfast bpduguard default
 Int Range fa0/1-8
    spanning-tree Portfast
-@BABA:
+@BABA/D2/A1/A2:
 config t
 spanning-tree Mode Rapid-pvst
 spanning-tree UplinkFast
@@ -358,10 +363,10 @@ end
 #sh int status err-disabled 
 TAAS: bounce/UP/down, bring BACK TO LIFE.
 config t
-int fa 0/1
+int fa 0/3
  shut
  no shut
-int fa 0/3
+int fa 0/7
  shut
  no shut
 end
@@ -485,7 +490,7 @@ config t
 hostname PLDTITO
 Track 1 Int gi 0/1 line-protocol
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.32.1.6
 standby 1 preempt
 standby 1 Priority 150
 standby 1 Track 1 decrement 60
@@ -503,9 +508,10 @@ COREBABA/GLOBE:
 config t
 hostname GLOBEITO
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.32.1.6
 standby 1 preempt
 standby 1 Priority 100
+end
 
 @D2 para real world
 config t
@@ -535,9 +541,9 @@ VRRP 10 preempt
 VRRP 10 Priority 100
 
 
-TASK17: Port-Aggregation/Etherchannel:
+TASK17: Port-Aggregation/Etherchannel: 100% exam LAB
 LACP:LINK AGGREGATION CONTROL PROTOCOL = ieee worldStandrad
-cisco = PortAggregationProtocl: PaGP
+cisco = PortAggregationProtocol: PaGP
 Combinding Two/More Layer 2 links AS ONE! Unite/UNITY
 @taas/BABA:
 config t
@@ -548,6 +554,16 @@ Int Range fa0/10-12
  do sh int po1 | inc BW
 
 TASK18: HOW TO RETAIN ALL THE INFORMATION:
+HOW TO GET CERTIFIED IN 2025!!!
+MAGIC FORMULA
+1. Anti-Tamad Medicine:
+   no one passes alone! tropa asnwerable.
+   Above: mas magaling sayo
+   Equal: challenges
+   Below: Help others in net,cisco,hacking
+2. How to pass the exam:
+   310 usd
+
 run RSThayup: switchingLAB
 1.sh cdp neighbor
 2.Trunk all the Ports:
